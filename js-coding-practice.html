@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Interactive JavaScript coding practice with categorized problems and instant feedback">
+  <title>JavaScript Coding Practice - Master JS Through Challenges</title>
+  <link rel="stylesheet" href="js-practice-styles.css">
+  <style>
+    /* Inline tweak for the new question list */
+    .problem-item {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--text-secondary);
+    }
+
+    .problem-item:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    .problem-item.active {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    #problem-list {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-primary) var(--bg-secondary);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">⚡</div>
+        <h1>JS Code Master</h1>
+      </div>
+      <div class="progress-badge">
+        <span id="app-status" style="font-weight: bold; margin-right: 10px;">Loading App...</span>
+        <span>Progress:</span>
+        <span class="count" id="progress-count">0/100</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>1. Choose Category</h2>
+      <div class="category-list">
+        <button class="category-btn active" data-category="all">All Modules</button>
+        <button class="category-btn" data-category="strings">Strings</button>
+        <button class="category-btn" data-category="arrays">Arrays</button>
+        <button class="category-btn" data-category="objects">Objects</button>
+        <button class="category-btn" data-category="recursion">Recursion</button>
+        <button class="category-btn" data-category="algorithms">Sorting</button>
+        <button class="category-btn" data-category="functions">Polyfills</button>
+        <button class="category-btn" data-category="async">Advanced</button>
+      </div>
+
+      <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--glass-border);">
+
+      <h2>2. Select Question</h2>
+      <div id="problem-list" class="category-list"
+        style="max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;">
+        <!-- Question names will load here -->
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Problem Card -->
+      <div class="problem-card">
+        <div class="problem-header">
+          <div class="problem-title-section">
+            <h2 id="problem-title">Welcome! Select a question on the left.</h2>
+            <div class="problem-meta">
+              <span class="difficulty-badge difficulty-easy" id="problem-difficulty">---</span>
+              <span class="category-tag" id="problem-category">---</span>
+            </div>
+          </div>
+          <div class="problem-actions">
+            <button class="icon-btn" id="mark-complete-btn" title="Mark as complete">✓</button>
+            <button class="icon-btn" id="reset-btn" title="Reset code">↻</button>
+          </div>
+        </div>
+
+        <div class="problem-description" id="problem-description">
+          Use the sidebar to pick one of the 100 JavaScript questions.
+        </div>
+
+        <div class="problem-examples" id="problem-examples"></div>
+
+        <div class="code-editor-section">
+          <h3>Write Your JavaScript Code:</h3>
+          <textarea class="code-editor" id="code-editor" spellcheck="false"
+            placeholder="// Select a question to start coding..."></textarea>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="run-btn">▶ Run Solution</button>
+          <button class="btn btn-secondary" id="solution-btn">💡 Get Hint</button>
+        </div>
+
+        <div class="results-section" id="results-section">
+          <h3>Test Results:</h3>
+          <div id="test-results"></div>
+        </div>
+
+        <div class="problem-navigation">
+          <button class="nav-btn" id="prev-btn">← Previous</button>
+          <span class="problem-counter" id="problem-counter">0 / 0</span>
+          <button class="nav-btn" id="next-btn">Next →</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Loading Database First -->
+  <script src="js-problems-database.js"></script>
+  <!-- Loading App Logic Second -->
+  <script src="js-practice-app.js"></script>
+</body>
+
+</html>

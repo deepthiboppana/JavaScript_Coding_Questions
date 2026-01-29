@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class car {
+        constructor(name, year) {
+          (this.name = name), (this.year = year);
+        }
+        run() {
+          return this.name + " " + "is runnining";
+        }
+      }
+      //   const car1 = new car("Ferrari", 25);
+      //   console.log(car1);
+      //   console.log(car1.run());
+      class Book {
+        constructor(title, author, year) {
+          (this.title = title), (this.author = author), (this.year = year);
+        }
+        getSummary() {
+          return "Title: " + this.title+", Author:" + this.author+",Year:" + this.year;
+        }
+      }
+      const book1 = new Book("Harry Potter", "J.K. Rowling",1997);
+      const book2 = new Book("The Hobbit", "J.R.R. Tolkien",1937);
+      console.log(book1.getSummary())
+      console.log(book2.getSummary())
+    </script>
+  </head>
+  <body>
+    <h1></h1>
+  </body>
+</html>
